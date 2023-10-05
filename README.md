@@ -1,2 +1,2 @@
 # algo
-算法demo
+hello-algo 的学习code
