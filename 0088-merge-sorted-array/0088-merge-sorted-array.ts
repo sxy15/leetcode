@@ -1,6 +1,10 @@
 /**
  Do not return anything, modify nums1 in-place instead.
  */
+ /**
+    双指针
+    对比 尾部的值
+  */
 /**
  * @param {number[]} nums1
  * @param {number} m
@@ -31,10 +35,10 @@ var merge = function(nums1, m, nums2, n) {
         j--;
     }
     
-    while (i >= 0) {
-        nums1[k] = nums1[i];
-        k--;
-        i--;
-    }
-    
+    // while (i >= 0) {
+    //     nums1[k] = nums1[i];
+    //     k--;
+    //     i--;
+    // }
 };
+
