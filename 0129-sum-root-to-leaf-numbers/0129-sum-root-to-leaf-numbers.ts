@@ -13,7 +13,7 @@
  */
 
 function sumNumbers(root: TreeNode): number {
-    let paths = [], sum = 0;
+    let paths = []
     let queue: any[] = [[root, root.val]]
 
     while(queue.length > 0) {
@@ -31,9 +31,5 @@ function sumNumbers(root: TreeNode): number {
         }
     }
 
-    for(let i = 0; i < paths.length; i++) {
-        sum += +paths[i]
-    }
-
-    return sum
+    return paths.reduce((cur, pre) => {return +cur + +pre }, 0)
 };
