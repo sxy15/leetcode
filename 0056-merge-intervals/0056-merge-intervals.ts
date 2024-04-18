@@ -10,7 +10,7 @@ function merge(intervals: number[][]): number[][] {
         i++
         if(s <= end && e >= start) {
             end = Math.max(end, e)
-            start = Math.min(start, s)
+            
         } else {
             res.push([start, end])
             start = s
