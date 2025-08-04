@@ -1,30 +1,16 @@
-// 1. 快慢指针
-// function removeElement(nums, val) {
-//     let slow = 0
-//     for(let fast = 0; fast < nums.length; fast++) {
-//         if(nums[fast] !== val) {
-//             nums[slow] = nums[fast]
-//             slow++
-//         }
-//     }
-
-//     return slow
-
-// }
-
-// 2. 双指针（交换）
 function removeElement(nums, val) {
-    let left = 0; 
-    let right = nums.length -1;
+     let l = 0
+     let r = 0
 
-    while(left <= right) {
-        if(nums[left] === val) {
-            [nums[left], nums[right]] = [nums[right], nums[left]];
-            right--;
+     while(r < nums.length) {
+        if(nums[r] !== val) {
+            nums[l] = nums[r]
+            l++
+            r++
         } else {
-            left++;
+            r++
         }
-    }
+     }
 
-    return left;
+     return l
 }
