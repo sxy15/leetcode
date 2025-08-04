@@ -1,24 +1,17 @@
 function merge(nums1, m, nums2, n) {
-    let i = m - 1; // nums1 有效元素末尾指针
-    let j = n - 1; // nums2 末尾指针
-    let k = m + n - 1; // 合并后数组末尾指针
+    let l1 = m -1
+    let l2 = n - 1
+    let current = m + n - 1;
 
-    // 从后向前合并，优先处理较大元素
-    while (i >= 0 && j >= 0) {
-        if (nums1[i] > nums2[j]) {
-            nums1[k] = nums1[i];
-            i--;
+    while(current >= 0) {
+        if(l1 >= 0 && l2 >= 0) {
+            nums1[current--] = nums1[l1] >= nums2[l2] ? nums1[l1--] : nums2[l2--]
         } else {
-            nums1[k] = nums2[j];
-            j--;
+            if(l1 >= 0) {
+                nums1[current--] = nums1[l1--]
+            } else {
+                nums1[current--] = nums2[l2--]
+            }
         }
-        k--;
-    }
-
-    // 若 nums2 还有剩余元素，直接复制到 nums1 前面
-    while (j >= 0) {
-        nums1[k] = nums2[j];
-        j--;
-        k--;
     }
 }
