@@ -1,27 +1,22 @@
 function jump(nums: number[]): number {
-   let n = nums.length
+    let nextEnd = 0
+    let currentEnd = 0
+    let jumps = 0
 
-   if(n === 1) return 0
+    if(nums.length === 1) {
+        return 0
+    }
 
-   let jump = 1
-   let reachable = nums[0]
-   let max_within_reachable = nums[0]
+    for(let i = 0; i < nums.length; i++) {
+        nextEnd = Math.max(nextEnd, nums[i] + i)
 
-   if(reachable >= n - 1) {
-     return jump
-   }
+        if(i === currentEnd) {
+            currentEnd = nextEnd
+            jumps++
 
-   for(let i = 1; i < n; i++) {
-    max_within_reachable = Math.max(max_within_reachable, i + nums[i])
-
-    if(i === reachable) {
-        reachable = max_within_reachable;
-        jump++;
-        if(reachable >= n - 1) {
-            break
+            if(currentEnd >= nums.length - 1) {
+                return jumps
+            }
         }
     }
-   }
-
-   return jump
 };
