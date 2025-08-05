@@ -1,10 +1,17 @@
-function maxProfit(prices: number[]): number {
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
     let profit = 0
-    let i = 0
-    let buy = 0
 
-    while(++i < prices.length) {
-        profit += Math.max(0, prices[i] - prices[buy++])
+    let prePrice = Infinity;
+
+    for(let price of prices) {
+        if(price > prePrice && prePrice !== Infinity) {
+            profit += price - prePrice
+        }
+        prePrice = price
     }
 
     return profit
