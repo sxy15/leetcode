@@ -1,14 +1,17 @@
 function removeDuplicates(nums: number[]): number {
-  if(nums.length <= 2) return nums.length
+    const cache: Map<any, number> = new Map()
 
-  let j = 1
+    let l = 0
 
-  for(let i = 2; i < nums.length; i++) {
-    if(nums[i] !== nums[j-1]) {
-        j++
-        nums[j] = nums[i]
+    for(let r = 0; r < nums.length; r++) {
+        const val = cache.get(nums[r]) || 0
+        if(!val || val < 2) {
+            cache.set(nums[r], val + 1);
+            nums[l] = nums[r]
+            l++
+        }
+    
     }
-  }
 
-  return j + 1
+    return l
 };
