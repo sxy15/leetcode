@@ -1,29 +1,23 @@
-// function maxProfit(prices: number[]): number {
-//     let sum = 0
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let profit = 0
 
-//     for(let i = 0; i < prices.length; i++) {
-//         for(let j = i; j < prices.length; j++) {
-//             let sub = prices[j] - prices[i]
-//             sum = Math.max(sum, sub)
-//         }
-//     }
+    let inPrice = Infinity;
+    let out = 0
 
-//     return sum
-// };
-
-function maxProfit(prices: number[]): number {
-    let maxProfit = 0
-    let minPrice = Number.MAX_VALUE
-
-    for(let i = 0; i < prices.length; i++) {
-        if(prices[i] < minPrice) {
-            minPrice = prices[i]
+    for(const price of prices) {
+        if(price < inPrice) {
+            inPrice = price
+            out = 0
         }
-
-        if((prices[i] - minPrice) > maxProfit) {
-            maxProfit = prices[i] - minPrice
+        if(price > out && inPrice !== Infinity) {
+            out = price
+            profit = Math.max(out - inPrice, profit)
         }
     }
 
-    return maxProfit
-}
+    return profit
+};
