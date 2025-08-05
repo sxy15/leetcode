@@ -1,20 +1,16 @@
 function majorityElement(nums: number[]): number {
-    let i = 1
-    let count = 1
-    let ele = nums[0]
+    let ele = 0;
+    let count = Math.floor(nums.length / 2);
+    const map = new Map();
 
-    while(i < nums.length) {
-        if(nums[i] === ele) {
-            count++
-        } else {
-            count--
-        }
-        if(count < 0) {
+
+    for(let i = 0; i < nums.length; i++) {
+        const c = (map.get(nums[i]) || 0) + 1;
+         map.set(nums[i], c);
+        if(c  > count) {
             ele = nums[i]
-            count = 1
+            return ele
         }
-        i++
     }
 
-    return ele
 };
