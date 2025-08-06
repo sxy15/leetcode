@@ -15,20 +15,22 @@ const map = {
 }
 
 function romanToInt(s: string): number {
-    let sum = 0, i = 0;
+    let i = 0
+    let l = s.length
+    let result = 0
 
-    while(i < s.length) {
-         let key = s[i] + (s[i+1] || '')
-        if(map[key] && i + 1 !== s.length) {
-            i ++
-            sum += map[key]
+    while(i < l) {
+        let l1 = s[i]
+        let l2 = s[i + 1]
+
+        if(l2 && map[`${l1}${l2}`]) {
+            result += map[`${l1}${l2}`]
+            i += 2;
         } else {
-            sum += map[s[i]]
+            result += map[l1];
+            i ++;
         }
-        
-        i++
     }
 
-    return sum
-    
+    return result
 };
